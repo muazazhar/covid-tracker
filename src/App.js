@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import React, { useState } from "react";
+import { Button } from "@material-ui/core";
+import Chart from "./chart";
 function App() {
+  const [screen, setScreen] = useState();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <h1>Covid-19 Tracker</h1>
+      <div className="nav">
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => setScreen("global")}
         >
-          Learn React
-        </a>
-      </header>
+          Global Stats
+        </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => setScreen("country")}
+        >
+          Country Stats
+        </Button>
+      </div>
+      <div className="container">
+        <Chart screen={screen} />
+      </div>
     </div>
   );
 }
